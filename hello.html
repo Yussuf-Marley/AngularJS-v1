@@ -1,0 +1,36 @@
+<!--
+**
+* Cytonn Technologies
+*
+* @author: Joseph Mahugu <jmahugu@cytonn.com>
+*
+* Project: AngularJs hello world
+*
+-->
+<!DOCTYPE html>
+<html>
+   
+   <head>
+      <script src="angular.min.js"></script>
+   </head>
+   <title>AngularJS</title>
+   <style>
+      .smart{
+         width: 75%;
+         margin: auto;
+      }
+   </style>
+   <body ng-app="">
+      <div class="smart">
+         <h2>Employee Details:</h2>
+         <label>Name:</label>
+            <input type = "text" ng-model = "yourName" placeholder = "Enter a name here"><br/><br/>
+         <label>Department:</label>
+            <input ng-init="myColor='lightblue'" style="background-color:{{myColor}}" ng-model="deptName" value="Department">
+            <hr />
+         <p>Name: {{yourName}}</p>
+         <p>Department: {{deptName}}</p>
+         <input type="submit" value="Submit">
+      </div>  
+   </body>
+</html>

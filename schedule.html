@@ -1,0 +1,59 @@
+<!--
+**
+* Cytonn Technologies
+*
+* @author: Joseph Mahugu <jmahugu@cytonn.com>
+*
+* Project: AngularJs simple page demo
+*
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>AngularJS Sample App</title>
+        <script src="angular.min.js"></script>
+        <style>
+            .main{
+                width: 75%;
+                margin: auto;
+            }
+        </style>
+    </head>
+    <body ng-app="myApp" ng-controller="todoCtrl">
+        <div class="main">
+            <h2>Simple Schedule List</h2>
+            <form ng-submit="todoAdd()">
+                <input type="text" ng-model="todoInput" size="75" placeholder="Add new activity">
+                <input type="submit" value="Add New">
+            </form>
+            <br>
+            <div ng-repeat="x in todoList">
+                <input type="checkbox" ng-model="x.done"> <span ng-bind="x.todoText"></span>
+            </div>
+
+            <p><button ng-click="remove()">Remove activity</button></p>
+
+            <script>
+            //Creating the module and controller
+            var app = angular.module('myApp', []); 
+            app.controller('todoCtrl', function($scope) {
+                $scope.todoList = [{todoText:'Activity One', done:false}];
+
+                //Adding the methods/functions
+                $scope.todoAdd = function() {
+                    $scope.todoList.push({todoText:$scope.todoInput, done:false});
+                    $scope.todoInput = "";
+                };
+
+                $scope.remove = function() {
+                    var oldList = $scope.todoList;
+                    $scope.todoList = [];
+                    angular.forEach(oldList, function(x) {
+                        if (!x.done) $scope.todoList.push(x);
+                    });
+                };
+            });
+            </script>
+        </div>
+</body>
+</html>
